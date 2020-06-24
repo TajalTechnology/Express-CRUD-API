@@ -1,4 +1,6 @@
 const Product = require('./../models').Product
+const User = require('./../models').User
+const bcrypt = require('bcrypt');
 module.exports = {
     register : (req, res) =>{
         return res.status(200).json({
@@ -75,18 +77,42 @@ module.exports = {
             "product":"okkupdate okkk"
             
         })
+    }, 
+    registration: (req, res) =>{
+        let {username, password,firstName,lastName,email} = req.body
+
+        let hash=bcrypt.hashSync('password', 10, function(err, hash) {
+            // Store hash in database
+          });
+        User.create({username, password:hash,firstName,lastName,email}).then(p => {
+            return res.status(200).json({
+                "product":"okk"
+                
+            })
+
+        }
+            )
+
+       
+
     },
+
+
 
     productDelete:  (req, res) => {
         const id = req.params.id;
       
         Product.destroy({
           where: { id: id }
+        }
+        ).then(p =>{
+            return res.status(200).json({
+                "product":"delete okkk",
+                p
+                
+            })
         })
-        return res.status(200).json({
-            "product":"delete okkk"
-            
-        })
+       
         //   .then(num => {
         //     if (num == 1) {
         //       res.send({

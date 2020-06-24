@@ -13,6 +13,7 @@ router.post('/products', authController.addProduct)
 router.get('/products', authController.getProduct)
 router.put('/products/:id', authController.productUpdate)
 router.delete('/products/:id', authController.productDelete)
+router.post('/registration', authController.registration)
 // router.get('/products', authController.getProduct)
 
 module.exports =router
