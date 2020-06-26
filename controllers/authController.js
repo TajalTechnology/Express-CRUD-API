@@ -84,6 +84,52 @@ module.exports = {
         let hash=bcrypt.hashSync('password', 10, function(err, hash) {
             // Store hash in database
           });
+
+        User.findOne({where: {username: username}})
+        .then(user =>{
+            if(!user){
+                User.findOne({where: {email: email}})
+                .then(user =>{
+                    if(!user){
+                        User.create({username, password:hash,firstName,lastName,email})
+                        .then(user =>{
+                            return res.status(201).json({
+                                "data":{
+                                    "message":"User created",
+                                    "type":"ok",
+                                    "user":user
+                                }
+                            })
+
+                        }).catch(e =>{})
+
+                    }
+
+                }).catch(e =>{})
+
+
+            }//if
+            else{
+                return res.status(201).json({
+                    "data":{
+                        "message":"username alreay exits",
+                        "type":"error"
+                    }
+                })
+
+            }
+
+        }).catch(e =>{
+            return res.status(201).json({
+                "data":{
+                    "message":"Someting went wrong",
+                    "type":"error",
+                    "user":e
+                }
+            })
+        })
+        //end
+
         User.create({username, password:hash,firstName,lastName,email}).then(p => {
             return res.status(200).json({
                 "product":"okk"
