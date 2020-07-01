@@ -10,7 +10,7 @@ app.use(bodyParser.json())
 const PORT = process.env.PORT || 3001 // define port
 
 //import router
-const authRouter = require('./router/productRouter')
+const productRouter = require('./router/productRouter')
 const cartRouter = require('./router/cartRouter')
 const authenticationRouter = require('./router/AuthenticationRouter')
 // const productRouter = require('./router/productRouter')
@@ -22,7 +22,7 @@ app.listen(PORT, () =>{
 
 })
 
-app.use('/auth', authRouter)
+app.use('/', productRouter)
 app.use('/', cartRouter)
 app.use('/',authenticationRouter)
 

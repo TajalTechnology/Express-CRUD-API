@@ -5,8 +5,8 @@ const bcrypt = require('bcrypt');
 module.exports = {
 
     addProduct: (req, res) =>{
-        let {name, price,image} = req.body
-        Product.create({name, price,image}).then(p => console.log({p}))
+        let {name, category,price,quantity} = req.body
+        Product.create({name, category,price,quantity}).then(p => console.log({p}))
 
         return res.status(200).json({
             "product":"okk"
@@ -14,16 +14,16 @@ module.exports = {
         })
 
     },
-    getProduct: (req, res) =>{
-        Product.findAll({"id":1})
-        .then(products =>{
-                return res.status(200).json({
-                    products
+    // getProduct: (req, res) =>{
+    //     Product.findAll({"id":id})
+    //     .then(products =>{
+    //             return res.status(200).json({
+    //                 products
                     
-                })
+    //             })
 
-            })  
-    },
+    //         })  
+    // },
 
     productUpdate: (req, res) =>{
         const id = req.params.id;

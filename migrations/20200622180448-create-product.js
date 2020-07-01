@@ -11,11 +11,14 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-      price: {
-        type: Sequelize.INTEGER
-      },
-      image: {
+      category: {
         type: Sequelize.STRING
+      },
+      price: {
+        type: Sequelize.FLOAT
+      },
+      quantity: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
