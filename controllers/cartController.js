@@ -29,6 +29,20 @@ module.exports = {
                                 }).catch(error => { return res.status(400).json({ "error": error }) })
                                 
                             }//if{update complete when qty==0}
+                            else{
+                                const found = products.some(el => el.product_id === product_id)
+                                if (!found) products.push({ product_id, name, quantity, price })
+                                let cart_string = JSON.stringify(cart_object)
+                                cart.update({ product: cart_string })
+                                    .then(cart => {
+                                        return res.status(200).json({
+                                            "message": "updated",
+                                            "cart": cart
+                                        })
+                                    }).catch(error => { return res.status(400).json({ "error": error }) })
+
+
+                            }
 
                         }// if
                     }// for
