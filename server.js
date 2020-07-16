@@ -22,6 +22,8 @@ app.listen(PORT, () =>{
 
 })
 
+app.get("/", (req, res) => res.send("home"))
+
 app.use('/', productRouter)
 app.use('/', cartRouter)
 app.use('/',authenticationRouter)

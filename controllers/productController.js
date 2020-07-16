@@ -14,15 +14,26 @@ module.exports = {
         })
 
     },
-    // getProduct: (req, res) =>{
-    //     Product.findAll({"id":id})
-    //     .then(products =>{
-    //             return res.status(200).json({
-    //                 products
+    getProduct: (req, res) =>{
+      
+        Product.findAll({})
+        .then(products =>{
+                return res.status(200).json({
+                    products
                     
-    //             })
+                })
 
-    //         })  
+            })  
+    },
+
+
+    // / system-1 /
+    
+    // getProduct: async (req, res) => {
+    //     let products = await Product.findAll({})
+    //     return res.status(200).json({
+    //         products 
+    //     })
     // },
 
     productUpdate: (req, res) =>{

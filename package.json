@@ -4,7 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "local-start": "nodemon server.js",
+    "start": "node server.js"
   },
   "keywords": [
     "Rest",
@@ -19,11 +21,17 @@
     "express": "^4.17.1",
     "faker": "^4.1.0",
     "jsonwebtoken": "^8.5.1",
-    "mysql2": "^2.1.0",
+    "pg": "^8.3.0",
+    "pg-hstore": "^2.3.3",
     "sequelize": "^5.21.13"
   },
   "devDependencies": {
     "nodemon": "^2.0.4",
     "sequelize-cli": "^5.5.1"
-  }
+  },
+  "engines": {
+    "node": "12.14.1",
+    "npm": "6.13.4"
+  },
+  "heroku-postbuild": "npm install --production"
 }
